@@ -1,0 +1,48 @@
+<div id="text">
+
+  <h2>Complex SVD with Real Matrices</h2>
+
+  The [http://en.wikipedia.org/wiki/Singular_value_decomposition, SVD]
+  of a complex valued matrix, $C$, is
+
+  $$
+  C=U \Sigma V^*
+  $$
+
+  How can we compute $U$ and $V$ if only a *real* SVD is available
+  (such as for [http://www.numericjs.com/, numericjs])?  From
+  [http://www.osti.gov/scitech/biblio/756121, this paper], with
+  subscripts $r$ and $i$ denoting the real and imaginary parts, we
+  know
+
+  $$
+  K=
+  \begin{bmatrix} C_r & -C_i \\ C_i & C_r \end{bmatrix}
+  =
+  \begin{bmatrix} U_r & -U_i \\ U_i & U_r \end{bmatrix}
+  \begin{bmatrix} \Sigma & 0 \\ 0 & \Sigma \end{bmatrix}
+  \begin{bmatrix} U_r & -U_i \\ U_i & U_r \end{bmatrix}^T
+  $$
+
+  Here $K$ is an __equivalent real matrix__. Finding the SVD of $K$
+  also finds the SVD of $C$ (since, e.g., $U=U_r+jU_i$). In practice
+  this can be coded as suggested
+  [http://www.nr.com/forum/showthread.php?t=765, here].  (Note that
+  the SVD is not unique and so the code may not recover the SVD
+  exactly as shown above.)
+
+  <hr/>
+
+  <br/>
+
+  <div class="left_col">
+    <div data-file="main.coffee"></div>
+  </div>    
+
+  <div class="right_col">
+    <div data-eval="main.coffee"></div>
+  </div>
+
+
+</div>
+
