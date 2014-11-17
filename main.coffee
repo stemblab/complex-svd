@@ -67,6 +67,3 @@ C2 = svd.U.dot(nm.diag(svd.S)).dot(svd.V.transjugate())
 
 # Export to other blabs
 $blab.csvd = csvd
-
-
-
